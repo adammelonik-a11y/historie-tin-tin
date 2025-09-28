@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betydning af Modstand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #0b0b0b;
+      color: #f0f0f0;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      width: 100%;
+      background-color: #444;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .nav-left button {
+      padding: 8px 14px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      transition: color .2s, border-bottom .2s;
+    }
+    .nav-left button:hover {
+      color: #ddd;
+      border-bottom: 2px solid #fff;
+    }
+
+    .nav-right {
+      font-family: "Courier New", monospace;
+      color: #f4f4f4;
+      text-shadow: 0 0 8px #484848;
+      letter-spacing: 2px;
+      font-size: 28px;
+    }
+
+    .content {
+      padding-top: 80px;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 10%;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      margin-bottom: 25px;
+    }
+
+    section p {
+      max-width: 800px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    h1.splash-title {
+      font-family: "Playfair Display", serif;
+      font-size: 80px;
+      text-align: center;
+      margin: 0 0 20px 0;
+      color: #f9f9f9;
+    }
+
+    h2 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 40px;
+      text-align: center;
+      margin: 0 0 20px 0;
+      color: #f9f9f9;
+    }
+    .options-container {
+  display: flex;
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.option-btn {
+  flex: 1 1 45%;   /* ~45% width, flexible */
+  min-width: 150px;
+  background-color: #222;
+  border: 1px solid #555;
+  color: #f0f0f0;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.option-btn:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+.option-btn.correct {
+  background-color: #28a745 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(40,167,69,0.7);
+}
+
+.option-btn.wrong {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(220,53,69,0.7);
+}
+
+#next-btn {
+  padding: 12px 25px;
+  margin-top: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+#next-btn:hover {
+  background-color: #666;
+  transform: translateY(-2px);
+}
+#question-text {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  #question-text {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #question-text {
+    font-size: 3rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-left">
+      <button onclick="openAndClose('churchill klubben.html')">Churchill klubben</button>
+      <button onclick="openAndClose('Holger danske.html')">Holger Danske</button>
+      <button onclick="openAndClose('BOPA.html')">BOPA</button>
+      <button onclick="openAndClose('modstand.html')">Modstand</button>
+    </div>
+    <div class="nav-right">
+      <span id="timer">00:00:00</span>
+    </div>
+  </div>
+
+  <script>
+    function openAndClose(url) {
+      window.open(url, '_blank');
+      window.close();
+    }
+  </script>
+
+  <!-- Page content -->
+  <div class="content">
+    <section class="active">
+      <h1 class="splash-title">Betydningen af Modstand</h1>
+    </section>
+
+    <section>
+      <img src="images/101st_with_members_of_dutch_resistance.jpg" alt="Modstand under besættelsen">
+      <h2>Symbol på Frihed</h2>
+      <p>
+        Modstandsbevægelsen i Danmark viste, at danskerne ønskede frihed under den tyske besættelse. Selv små handlinger som sabotage, protester og plakater betød meget.
+      </p>
+    </section>
+
+    <section>
+      <img src="images/58a2eaaadcdae_o_full-1080x675.jpg" alt="Sabotage aktioner">
+      <h2>Sabotage og Effekt</h2>
+      <p>
+        BOPA og Holger Danske lavede sabotage, som stoppede tyske leverancer. Det gjorde krigen sværere for tyskerne og viste, at Danmark sagde nej til besættelsen.
+      </p>
+    </section>
+
+    <section>
+      <img src="images/Slide276.webp" alt="Efter krigen">
+      <h2>Eftervirkninger</h2>
+      <p>
+        Modstandens betydning fortsatte efter krigen. Den samlede danskerne, blev en del af Danmarks historie, og mange medlemmer blev rost for deres mod.
+      </p>
+    </section>
+
+    <section>
+      <img src="images/churchill-klubben-foer-anholdelse.jpg" alt="Inspiration">
+      <h2>Inspiration for Fremtiden</h2>
+      <p>
+        Historien om modstand viser, at selv under svære tider kan folk gøre en forskel. Modstandsbevægelsen giver stadig inspiration til mod og retfærdighed.
+      </p>
+    </section>
+
+    <section id="quiz-section">
+      <h2>Quiz: Hvor meget ved du om modstandsbevægelsen?</h2>
+      <div id="quiz-container">
+        <div class="question" id="question-text"></div>
+        <div id="options" class="options-container"></div>
+        <button id="next-btn" style="display:none;">Næste spørgsmål</button>
+        <div id="score" style="margin-top:20px;"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Timer
+    const timerEl = document.getElementById('timer');
+    let seconds = 0;
+    setInterval(() => {
+      seconds++;
+      const hrs = Math.floor(seconds / 3600);
+      const mins = Math.floor((seconds % 3600) / 60);
+      const secs = seconds % 60;
+      timerEl.textContent =
+        String(hrs).padStart(2,'0') + ':' +
+        String(mins).padStart(2,'0') + ':' +
+        String(secs).padStart(2,'0');
+    }, 1000);
+  </script>
+
+  <script>
+    const quizData = [
+      {
+        question: "Hvilken aldersgruppe bestod Churchill Klubben primært af?",
+        options: ["Voksne mænd", "Teenagere", "Børn under 10", "Kvinder"],
+        answer: 1
+      },
+      {
+        question: "Hvilken gruppe stod for sabotage?",
+        options: ["BOPA", "Holger Danske", "Churchill Klubben", "Modstandsbevægelsen generelt"],
+        answer: 3
+      },
+      {
+        question: "Hvad var et vigtigt mål for modstandsgrupperne?",
+        options: ["At samle skat", "At sabotere tyskernes forsyninger", "At skrive avisartikler", "At bygge skoler"],
+        answer: 1
+      },
+      {
+        question: "Hvilken metode brugte Holger Danske ofte?",
+        options: ["Propaganda", "Sabotage", "Indsamling af våben", "Undervisning"],
+        answer: 1
+      },
+      {
+        question: "Hvilken by blev ofte brugt som base for BOPA?",
+        options: ["København", "Aarhus", "Odense", "Esbjerg"],
+        answer: 0
+      },
+      {
+        question: "Hvilket år blev Churchill Klubben dannet?",
+        options: ["1940", "1942", "1944", "1945"],
+        answer: 0
+      },
+      {
+        question: "Hvad var en vigtig motivation for modstandsbevægelsen?",
+        options: ["Politiske penge", "Frihed og selvbestemmelse", "Religiøse årsager", "Handel med Tyskland"],
+        answer: 1
+      },
+      {
+        question: "Hvilken type aktioner udførte modstandsbevægelsen primært?",
+        options: ["Sabotage og spionage", "Turistguider", "Børneaktiviteter", "Bygge skoler"],
+        answer: 0
+      },
+      {
+        question: "Hvilken eftervirkning havde modstandsbevægelsen på Danmark?",
+        options: ["Intet væsentligt", "Nationalt sammenhold og hæder", "Økonomisk kollaps", "Skolelukninger"],
+        answer: 1
+      },
+       {
+        question: "er Adam sej?",
+        options: ["Ja"],
+        answer: 0
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionText = document.getElementById("question-text");
+    const optionsContainer = document.getElementById("options");
+    const nextBtn = document.getElementById("next-btn");
+    const scoreDisplay = document.getElementById("score");
+
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      questionText.textContent = q.question;
+      optionsContainer.innerHTML = "";
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.className = "option-btn";
+        btn.addEventListener("click", () => selectAnswer(index));
+        optionsContainer.appendChild(btn);
+      });
+
+      nextBtn.style.display = "none";
+    }
+
+    function selectAnswer(index) {
+      const q = quizData[currentQuestion];
+      const buttons = document.querySelectorAll(".option-btn");
+
+      buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === q.answer) {
+          btn.classList.add("correct");
+        } else if (i === index) {
+          btn.classList.add("wrong");
+        }
+      });
+
+      if (index === q.answer) score++;
+      nextBtn.style.display = "inline-block";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showScore();
+      }
+    });
+
+    function showScore() {
+      questionText.textContent = `Du fik ${score} ud af ${quizData.length} rigtige!`;
+      optionsContainer.innerHTML = "";
+      nextBtn.style.display = "none";
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOPA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #0b0b0b;
+      color: #f0f0f0;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      width: 100%;
+      background-color: #444;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .nav-left button {
+      padding: 8px 14px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      transition: color .2s, border-bottom .2s;
+    }
+    .nav-left button:hover {
+      color: #ddd;
+      border-bottom: 2px solid #fff;
+    }
+
+    .nav-right {
+      font-family: "Courier New", monospace;
+      color: #f4f4f4;
+      text-shadow: 0 0 8px #484848;
+      letter-spacing: 2px;
+      font-size: 28px;
+    }
+
+    .content {
+      padding-top: 80px;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 10%;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      margin-bottom: 25px;
+    }
+
+    section p {
+      max-width: 800px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    h1.splash-title {
+      font-family: "Playfair Display", serif;
+      font-size: 80px;
+      text-align: center;
+      margin: 0 0 20px 0;
+      color: #f9f9f9;
+    }
+
+    h2 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 40px;
+      text-align: center;
+      margin: 0 0 20px 0;
+      color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-left">
+      <button onclick="openAndClose('churchill klubben.html')">Churchill klubben</button>
+      <button onclick="openAndClose('Holger danske.html')">Holger Danske</button>
+      <button onclick="openAndClose('BOPA.html')">BOPA</button>
+      <button onclick="openAndClose('modstand.html')">Modstand</button>
+    </div>
+    <div class="nav-right">
+      <span id="timer">00:00:00</span>
+    </div>
+  </div>
+
+  <script>
+    function openAndClose(url) {
+      window.open(url, '_blank');
+      window.close();
+    }
+  </script>
+
+  <!-- Page content -->
+  <div class="content">
+    <section class="active">
+      <h1 class="splash-title">BOPA</h1>
+    </section>
+
+    <section>
+      <img src="images/bopa.webp" alt="BOPA medlemmer">
+      <h2>Hvem var de?</h2>
+      <p>
+        BOPA (Borgerlige Partisaner) bestod primært af unge kommunister og andre idealistiske borgere, som ønskede at sabotere den tyske besættelsesmagt.
+      </p>
+      <p>
+        De arbejdede i små celler, var meget organiserede, og fokuserede på at skade tyskernes industri og forsyningskæder.
+      </p>
+    </section>
+
+    <section>
+      <img src="images/standard_compressed_FHM-244855.jpg" alt="Sabotage">
+      <h2>Sabotage</h2>
+      <p>
+        Gruppen stod bag sprængning af fabrikker, værksteder og transportmidler, især dem der var til gavn for tyskerne.
+      </p>
+      <p>
+        De indsamlede også information om tyske bevægelser og samarbejdede med de allierede, når det var muligt.
+      </p>
+    </section>
+
+    <section>
+      <img src="images/Fabriksbygninger-i-brand-efter-BOPAs-sabotageaktion-mod-Riffelsyndikatet-i-1944-1024x680.jpg" alt="Efter krigen">
+      <h2>Efter krigen</h2>
+      <p>
+        Mange medlemmer blev hædret for deres mod og indsats, mens andre havde svært ved at tilpasse sig et normalt liv efter krigens farlige og traumatiske oplevelser.
+      </p>
+      <p>
+        BOPA er stadig et symbol på effektiv modstand og ungdommens mod under besættelsen.
+      </p>
+    </section>
+  </div>
+
+  <script>
+    // Timer
+    const timerEl = document.getElementById('timer');
+    let seconds = 0;
+    setInterval(() => {
+      seconds++;
+      const hrs = Math.floor(seconds / 3600);
+      const mins = Math.floor((seconds % 3600) / 60);
+      const secs = seconds % 60;
+      timerEl.textContent =
+        String(hrs).padStart(2,'0') + ':' +
+        String(mins).padStart(2,'0') + ':' +
+        String(secs).padStart(2,'0');
+    }, 1000);
+
+    // Section reveal on scroll
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+
+</body>
+</html>
