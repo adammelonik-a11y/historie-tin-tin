@@ -108,14 +108,14 @@
     }
     .options-container {
   display: flex;
-  flex-wrap: wrap; /* Wrap on smaller screens */
+  flex-wrap: wrap; 
   gap: 15px;
   justify-content: center;
   margin-top: 20px;
 }
 
 .option-btn {
-  flex: 1 1 45%;   /* ~45% width, flexible */
+  flex: 1 1 45%;   
   min-width: 150px;
   background-color: #222;
   border: 1px solid #555;
@@ -186,7 +186,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <div class="navbar">
     <div class="nav-left">
       <button onclick="openAndClose('Churchillklubben.html')">Churchill klubben</button>
@@ -206,7 +205,7 @@
     }
   </script>
 
-  <!-- Page content -->
+  
   <div class="content">
     <section class="active">
       <h1 class="splash-title">Betydningen af Modstand</h1>
@@ -269,7 +268,7 @@
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
 
-    // Timer
+  
     const timerEl = document.getElementById('timer');
     let seconds = 0;
     setInterval(() => {
@@ -398,5 +397,6 @@
   </script>
 </body>
 </html>
+
 
 
