@@ -54,6 +54,20 @@
       letter-spacing: 2px;
       font-size: 28px;
     }
+    .nav-right button {
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  transition: color .2s, border-bottom .2s;
+}
+.nav-right button:hover {
+  color: #ddd;
+  border-bottom: 2px solid #fff;
+}
+
 
     .content {
       padding-top: 80px;
@@ -119,10 +133,11 @@
       <button onclick="openAndClose('BOPA.html')">BOPA</button>
       <button onclick="openAndClose('modstand.html')">Modstand</button>
     </div>
-    <div class="nav-right">
+   <div class="nav-right">
   <span id="timer">00:00:00</span>
-  <a href="SWOON.html" target="_blank" style="margin-left: 20px; color: #f4f4f4; text-decoration: underline; font-size: 20px;">SWOON</a>
+  <button onclick="openAndClose('SWOON.html')" style="margin-left: 20px;">SWOON</button>
 </div>
+
 
   </div>
 
@@ -205,6 +220,7 @@
 
 </body>
 </html>
+
 
 
 
