@@ -47,14 +47,18 @@
       border-bottom: 2px solid #fff;
     }
 
-    .nav-right {
-      font-family: "Courier New", monospace;
-      color: #f4f4f4;
-      text-shadow: 0 0 8px #484848;
-      letter-spacing: 2px;
-      font-size: 28px;
-    }
-    .nav-right button {
+ .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: "Courier New", monospace;
+  color: #f4f4f4;
+  text-shadow: 0 0 8px #484848;
+  letter-spacing: 2px;
+  font-size: 28px;
+}
+
+.nav-right .nav-button {
   padding: 8px 14px;
   background: transparent;
   border: none;
@@ -63,7 +67,8 @@
   font-size: 24px;
   transition: color .2s, border-bottom .2s;
 }
-.nav-right button:hover {
+
+.nav-right .nav-button:hover {
   color: #ddd;
   border-bottom: 2px solid #fff;
 }
@@ -133,12 +138,10 @@
       <button onclick="openAndClose('BOPA.html')">BOPA</button>
       <button onclick="openAndClose('modstand.html')">Modstand</button>
     </div>
-   <div class="nav-right">
+ <div class="nav-right">
   <span id="timer">00:00:00</span>
-  <button onclick="openAndClose('SWOON.html')" style="margin-left: 20px;">SWOON</button>
+  <button onclick="openAndClose('SWOON.html')" class="nav-button">SWOON</button>
 </div>
-
-
   </div>
 
   <script>
@@ -220,6 +223,7 @@
 
 </body>
 </html>
+
 
 
 
