@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erindringer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #ffffff;
+      color: #000000;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      width: 100%;
+      background-color: #c8c8c8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .nav-left button {
+      padding: 8px 14px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 24px;
+      transition: color .2s, border-bottom .2s;
+    }
+    .nav-left button:hover {
+      color: #ddd;
+      border-bottom: 2px solid #fff;
+    }
+
+    .nav-right {
+      font-family: "Courier New", monospace;
+      color: #f4f4f4;
+      text-shadow: 0 0 8px #484848;
+      letter-spacing: 2px;
+      font-size: 28px;
+    }
+
+    .content {
+      padding-top: 80px;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 10%;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    video {
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      max-width: 400px;
+      width: 80%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    h1.splash-title {
+      font-family: "Playfair Display", serif;
+      font-size: 80px;
+      text-align: center;
+      margin: 0 0 20px 0;
+      color: #000000;
+    }
+
+    h2 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 40px;
+      text-align: center;
+      margin: 0 0 20px 0;
+      color: #000000;
+    }
+
+    p {
+      max-width: 800px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="nav-left">
+      <button onclick="openAndClose('SWOON.html')">Besættelsen</button>
+      <button onclick="openAndClose('GUNNERS.html')">Erindringer</button>
+      <button onclick="openAndClose('PISTOLER.html')">BOPA</button>
+      <button onclick="openAndClose('GOON.html')">Modstand</button>
+    </div>
+    <div class="nav-right">
+      <span id="timer">00:00:00</span>
+    </div>
+  </div>
+
+  <script>
+    function openAndClose(url) {
+      window.open(url, '_blank');
+      window.close();
+    }
+
+    const timerEl = document.getElementById('timer');
+    let seconds = 0;
+    setInterval(() => {
+      seconds++;
+      const hrs = Math.floor(seconds / 3600);
+      const mins = Math.floor((seconds % 3600) / 60);
+      const secs = seconds % 60;
+      timerEl.textContent =
+        String(hrs).padStart(2,'0') + ':' +
+        String(mins).padStart(2,'0') + ':' +
+        String(secs).padStart(2,'0');
+    }, 1000);
+  </script>
+
+  <div class="content">
+    <section class="active">
+      <h1 class="splash-title">Erindringer</h1>
+    </section>
+
+    <section>
+      <video controls>
+        <source src="images/KLAIRE2.mov" type="video/quicktime">
+        sorry bud.
+      </video>
+    </section>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+
+</body>
+</html>
